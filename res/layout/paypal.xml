@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:background="@drawable/milk">
+    
+    <ImageButton
+        android:id="@+id/donate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        
+        android:layout_centerInParent="true"
+        android:src="@drawable/donate1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/Text"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/donate"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:layout_marginRight="38dp"
+        android:text="Donate For a Cause"
+        android:textColor="@color/common_signin_btn_text_dark"
+        android:textSize="25dp"
+        android:padding="20dp"
+        android:textStyle="bold" />
+	
+</RelativeLayout>
