@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <resources>
 
     <!--
@@ -10,3 +11,13 @@
     </style>
 
 </resources>
+=======
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:style/Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c

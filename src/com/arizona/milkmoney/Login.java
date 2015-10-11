@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import info.androidhive.slidingmenu.R;
+=======
+
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
 public class Login extends Activity implements View.OnClickListener {
     Button bLogin;
@@ -37,6 +46,7 @@ public class Login extends Activity implements View.OnClickListener {
     }
 
     @Override
+<<<<<<< HEAD
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
@@ -45,11 +55,18 @@ public class Login extends Activity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
             	String username = etUsername.getText().toString();
+=======
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.bLogin:
+                String username = etUsername.getText().toString();
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
                 String password = etPassword.getText().toString();
 
                 User user = new User(username, password);
 
                 authenticate(user);
+<<<<<<< HEAD
               
             }
           });
@@ -66,6 +83,15 @@ public class Login extends Activity implements View.OnClickListener {
 
 	
 
+=======
+                break;
+            case R.id.tvRegisterLink:
+                Intent registerIntent = new Intent(Login.this, Register.class);
+                startActivity(registerIntent);
+                break;
+        }
+    }
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
     private void authenticate(User user) {
         ServerRequests serverRequest = new ServerRequests(this);
@@ -91,6 +117,7 @@ public class Login extends Activity implements View.OnClickListener {
     private void logUserIn(User returnedUser) {
         userLocalStore.storeUserData(returnedUser);
         userLocalStore.setUserLoggedIn(true);
+<<<<<<< HEAD
         Intent launchNextActivity;
         launchNextActivity = new Intent(this, MainActivity.class);
         launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -123,4 +150,8 @@ public class Login extends Activity implements View.OnClickListener {
 		// TODO Auto-generated method stub
 		
 	}
+=======
+        startActivity(new Intent(this, MainActivity.class));
+    }
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 }

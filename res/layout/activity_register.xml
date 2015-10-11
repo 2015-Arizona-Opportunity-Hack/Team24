@@ -7,23 +7,39 @@
 
 
     <TextView
+<<<<<<< HEAD
         android:text="First Name"
+=======
+        android:text="Name"
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <EditText
+<<<<<<< HEAD
         android:id="@+id/etFName"
+=======
+        android:id="@+id/etName"
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
 
     <TextView
+<<<<<<< HEAD
         android:text="Last Name"
+=======
+        android:text="Age"
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <EditText
+<<<<<<< HEAD
         android:id="@+id/etLName"
+=======
+        android:id="@+id/etAge"
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
@@ -50,6 +66,7 @@
         android:inputType="textPassword"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content" />
+<<<<<<< HEAD
     
         <TextView
         android:text="Phone Number"
@@ -85,6 +102,8 @@
         android:onClick="onCheckboxClicked"/>
 
 
+=======
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
     <Button
         android:id="@+id/bRegister"

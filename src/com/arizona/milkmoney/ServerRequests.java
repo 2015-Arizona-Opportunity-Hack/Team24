@@ -4,7 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -20,6 +23,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+<<<<<<< HEAD
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -30,12 +34,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+=======
+import java.util.ArrayList;
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
 
 public class ServerRequests {
     ProgressDialog progressDialog;
     public static final int CONNECTION_TIMEOUT = 1000 * 15;
+<<<<<<< HEAD
     public static final String SERVER_ADDRESS = "http://192.168.112.170:8080/MilkMoney/";
+=======
+    public static final String SERVER_ADDRESS = "http://tonikamitv.hostei.com/";
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
     public ServerRequests(Context context) {
         progressDialog = new ProgressDialog(context);
@@ -44,10 +55,17 @@ public class ServerRequests {
         progressDialog.setMessage("Please wait...");
     }
 
+<<<<<<< HEAD
     public void storeUserDataInBackground(User user,String req,
                                           GetUserCallback userCallBack) {
         progressDialog.show();
         new StoreUserDataAsyncTask(user, req,userCallBack).execute();
+=======
+    public void storeUserDataInBackground(User user,
+                                          GetUserCallback userCallBack) {
+        progressDialog.show();
+        new StoreUserDataAsyncTask(user, userCallBack).execute();
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
     }
 
     public void fetchUserDataAsyncTask(User user, GetUserCallback userCallBack) {
@@ -63,23 +81,42 @@ public class ServerRequests {
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void> {
         User user;
         GetUserCallback userCallBack;
+<<<<<<< HEAD
         String req;
 
         public StoreUserDataAsyncTask(User user,String req, GetUserCallback userCallBack) {
             this.user = user;
             this.req=req;
+=======
+
+        public StoreUserDataAsyncTask(User user, GetUserCallback userCallBack) {
+            this.user = user;
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
             this.userCallBack = userCallBack;
         }
 
         @Override
         protected Void doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<NameValuePair>();
+<<<<<<< HEAD
           
          /*   HttpParams httpRequestParams = getHttpRequestParams();
 
             HttpClient client = new DefaultHttpClient(httpRequestParams);
             HttpPost post = new HttpPost(SERVER_ADDRESS
                     + "Login");
+=======
+            dataToSend.add(new BasicNameValuePair("name", user.name));
+            dataToSend.add(new BasicNameValuePair("username", user.username));
+            dataToSend.add(new BasicNameValuePair("password", user.password));
+            dataToSend.add(new BasicNameValuePair("age", user.age + ""));
+
+            HttpParams httpRequestParams = getHttpRequestParams();
+
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS
+                    + "Register.php");
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
             try {
                 post.setEntity(new UrlEncodedFormEntity(dataToSend));
@@ -87,6 +124,7 @@ public class ServerRequests {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+<<<<<<< HEAD
 */
             
 
@@ -152,6 +190,10 @@ public class ServerRequests {
 
             
             //return null;
+=======
+
+            return null;
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
         }
 
         private HttpParams getHttpRequestParams() {
@@ -184,6 +226,7 @@ public class ServerRequests {
         @Override
         protected User doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<NameValuePair>();
+<<<<<<< HEAD
            Map<String, String> paramsMap = new HashMap<String, String>();
     		paramsMap.put("username", user.username);
     		paramsMap.put("password", user.password);
@@ -284,10 +327,45 @@ new StoreEventDataAsyncTask(er,user,userCallBack).execute();
             try {
                 post.setEntity(new UrlEncodedFormEntity(dataToSend));
                 client.execute(post);
+=======
+            dataToSend.add(new BasicNameValuePair("username", user.username));
+            dataToSend.add(new BasicNameValuePair("password", user.password));
+
+            HttpParams httpRequestParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpRequestParams,
+                    CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpRequestParams,
+                    CONNECTION_TIMEOUT);
+
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS
+                    + "FetchUserData.php");
+
+            User returnedUser = null;
+
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = client.execute(post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                String result = EntityUtils.toString(entity);
+                JSONObject jObject = new JSONObject(result);
+
+                if (jObject.length() != 0){
+                    Log.v("happened", "2");
+                    String name = jObject.getString("name");
+                    int age = jObject.getInt("age");
+
+                    returnedUser = new User(name, age, user.username,
+                            user.password);
+                }
+
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
+<<<<<<< HEAD
             return null;
         }
         private HttpParams getHttpRequestParams() {
@@ -312,4 +390,16 @@ new StoreEventDataAsyncTask(er,user,userCallBack).execute();
 
     
 
+=======
+            return returnedUser;
+        }
+
+        @Override
+        protected void onPostExecute(User returnedUser) {
+            super.onPostExecute(returnedUser);
+            progressDialog.dismiss();
+            userCallBack.done(returnedUser);
+        }
+    }
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 }

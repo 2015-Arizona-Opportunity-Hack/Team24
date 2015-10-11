@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import info.androidhive.slidingmenu.R;
+=======
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 
 public class LoginActivity extends Activity {
 
@@ -17,7 +20,11 @@ public class LoginActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
+<<<<<<< HEAD
 		//getMenuInflater().inflate(R.menu.login, menu);
+=======
+		getMenuInflater().inflate(R.menu.login, menu);
+>>>>>>> 268d4b0bc35999f8ebacf749c94c360a93d0696c
 		return true;
 	}
 
